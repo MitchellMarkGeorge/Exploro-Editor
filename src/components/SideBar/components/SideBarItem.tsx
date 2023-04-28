@@ -6,6 +6,7 @@ interface Props {
   isSelected: boolean;
   isSideBarOpen: boolean;
   icon: IconType;
+  onClick: () => void;
 }
 
 const SideBarItemContainer = styled.div<
@@ -13,6 +14,7 @@ const SideBarItemContainer = styled.div<
 >`
   padding: 0.75rem;
   border-radius: 0.5rem;
+  display: flex;
   background-color: ${(props) => {
     if (props.isSelected && props.isSideBarOpen)
       return props.theme.colors.primaryAccent;
@@ -20,15 +22,26 @@ const SideBarItemContainer = styled.div<
     return "transparent";
   }};
   color: ${(props) => props.theme.colors.primaryText};
+  :hover {
+    ${(props) => {
+      if (!props.isSelected)
+        return `background-color: ${props.theme.colors.secondaryAccent}`;
+    }}
+  }
 `;
 
 export default function SideBarItem({
   icon: Icon,
   isSelected,
   isSideBarOpen,
+  onClick,
 }: Props) {
   return (
-    <SideBarItemContainer isSelected={isSelected} isSideBarOpen={isSideBarOpen}>
+    <SideBarItemContainer
+      isSelected={isSelected}
+      isSideBarOpen={isSideBarOpen}
+      onClick={onClick}
+    >
       <Icon size="1rem" />
     </SideBarItemContainer>
   );

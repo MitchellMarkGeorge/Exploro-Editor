@@ -1,6 +1,7 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import { IpcHandler } from './IpcHandler';
 // import { update } from './update'
 
 // The built directory structure
@@ -71,6 +72,8 @@ async function createWindow() {
   } else {
     win.loadFile(indexHtml);
   }
+
+  IpcHandler.init(win);
 
   // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {

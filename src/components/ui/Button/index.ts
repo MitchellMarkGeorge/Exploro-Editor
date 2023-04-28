@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const Button = styled.button`
     font: inherit;
     font-size: 0.75rem;
+    font-weight: 500;
     /* font-size: 0.875rem; */
     color: inherit;
     border: none;
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
+    /* padding: 0.5rem 0.75rem; */
     background-color: ${props => props.theme.colors.primaryAccent};
     -webkit-app-region: no-drag;
     cursor: pointer;
