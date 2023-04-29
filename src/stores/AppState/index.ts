@@ -29,9 +29,21 @@ export const useAppState = create<AppState>((set, get) => ({
     set({ currentTheme: theme });
   },
   settings: DEFAULT_SETTINGS,
-//   showSidebar: true,
-//   toggleShowSidebar: () => {
-//     const { showSidebar } = get();
-//     set({ showSidebar: !showSidebar });
-//   },
+  updateSettings: (updates) => {
+    const { settings } = get();
+    set({ settings: { ...settings, ...updates } });
+  },
+  showNewFileModal: false,
+  setShowNewFileModal: (showNewFileModal) => {
+    set({ showNewFileModal });
+  },
+  showNewProjectModal: false,
+  setShowNewProjectModal: (showNewProjectModal) => {
+    set({ showNewProjectModal })
+  }
+  //   showSidebar: true,
+  //   toggleShowSidebar: () => {
+  //     const { showSidebar } = get();
+  //     set({ showSidebar: !showSidebar });
+  //   },
 }));

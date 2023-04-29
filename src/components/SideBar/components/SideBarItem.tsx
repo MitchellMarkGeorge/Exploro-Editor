@@ -22,6 +22,7 @@ const SideBarItemContainer = styled.div<
     return "transparent";
   }};
   color: ${(props) => props.theme.colors.primaryText};
+  cursor: pointer;
   :hover {
     ${(props) => {
       if (!props.isSelected)

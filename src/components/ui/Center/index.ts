@@ -12,5 +12,6 @@ export const Center = styled.div<Props>`
     justify-content: center;
     align-items: center;
     ${props => props.spacing && `gap: ${props.spacing};`};
+    user-select: none;
 
 `

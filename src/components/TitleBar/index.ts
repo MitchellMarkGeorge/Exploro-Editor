@@ -1,3 +1,3 @@
-import TopBar from "./TitleBar";
+import TitleBar from "./TitleBar";
 
-export default TopBar;
+export default TitleBar;

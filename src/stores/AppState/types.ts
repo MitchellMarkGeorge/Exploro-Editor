@@ -11,6 +11,11 @@ export interface AppState {
     changeTheme: (theme: Theme) => void
     addTheme: (theme: Theme) => void
     settings: Settings
+    updateSettings: (updates: Partial<Settings>) => void
+    showNewFileModal: boolean
+    setShowNewFileModal: (showNewFileModal: boolean) => void
+    showNewProjectModal: boolean
+    setShowNewProjectModal: (showNewProjectModal: boolean) => void
     // showSidebar: boolean
     // toggleShowSidebar: () => void
 }

@@ -22,9 +22,17 @@ export const useWorkspaceState = create<WorkspaceState>((set, get) => ({
   },
   selectedSideBarItem: SideBarItemType.Files,
   setSelectedSideBarItem: (sideBarType) => {
-    set({ selectedSideBarItem: sideBarType });
+    const { toggleSideBar, selectedSideBarItem } = get();
+    if (selectedSideBarItem === sideBarType) {
+       toggleSideBar(); 
+    }  else {
+        set({ selectedSideBarItem: sideBarType, isSideBarOpen: true });
+    }
   },
   isSideBarOpen: false,
+  closeSideBar: () => {
+    set({ isSideBarOpen: false});
+  },
   toggleSideBar: () => {
     const { isSideBarOpen } = get();
     set({ isSideBarOpen: !isSideBarOpen });

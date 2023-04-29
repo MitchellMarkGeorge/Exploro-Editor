@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TrafficLightButton } from "./components/TrafficLightButton";
 import { Button } from "../ui/Button";
 import windowButtons from "@/services/windowButtons";
+import { useAppState } from "@/stores/AppState";
 
 const TopBarContainer = styled.div`
   width: 100%;
@@ -37,7 +38,8 @@ const TopBarTitle = styled.div`
   font-size: 0.875rem;
 `;
 
-export default function TopBar() {
+export default function TitleBar() {
+  const setShowNewProjectModal = useAppState(state => state.setShowNewProjectModal);
   return (
     <TopBarContainer>
       <TrafficLightButtonContainer>
@@ -55,7 +57,7 @@ export default function TopBar() {
         />
       </TrafficLightButtonContainer>
       <TopBarTitle>Exploro Editor</TopBarTitle>
-      <Button>New Playground</Button>
+      <Button onClick={() => setShowNewProjectModal(true)}>New Playground</Button>
     </TopBarContainer>
   );
 }

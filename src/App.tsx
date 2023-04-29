@@ -1,11 +1,10 @@
-import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style/GlobalStyle";
-import { Button } from "./components/ui/Button";
-import TopBar from "./components/TitleBar";
+import TitleBar from "./components/TitleBar";
 import { useAppState } from "./stores/AppState";
-import SideBar from "./components/SideBar";
 import Workspace from "./components/Workspace";
+import NewFileModal from "./components/modals/NewFile";
+import NewProjectModal from "./components/modals/NewProject";
 
 const AppContainer = styled.div`
   height: 100%;
@@ -13,8 +12,6 @@ const AppContainer = styled.div`
   color: ${props => props.theme.colors.primaryText};
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
 `
 
 function App() {
@@ -22,8 +19,10 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyle />
+      <NewFileModal/>
+      <NewProjectModal/>
       <AppContainer>
-        <TopBar/>
+        <TitleBar/>
         <Workspace/>
       </AppContainer>
     </ThemeProvider>

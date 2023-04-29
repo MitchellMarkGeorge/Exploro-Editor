@@ -12,6 +12,7 @@ export interface WorkspaceState {
     setSelectedSideBarItem: (sideBarType: SideBarItemType) => void
     isSideBarOpen: boolean
     toggleSideBar: () => void
+    closeSideBar: () => void
 }
 
 interface File {

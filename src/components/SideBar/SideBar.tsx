@@ -4,6 +4,7 @@ import SideBarItem from "./components/SideBarItem";
 // import { HiDocument } from "react-icons/hi";
 import { HiPaintBrush, HiCog8Tooth, HiDocument } from "react-icons/hi2";
 import { SideBarItemType } from "@/stores/WorkspaceState/types";
+import { useWorkspaceState } from "@/stores/WorkspaceState";
 
 const SideBarContainer = styled.div`
   height: 100%;
@@ -27,15 +28,17 @@ const sideBarItems = [
 ];
 
 export default function SideBar() {
-  const [selectedSideBarItem, setSelectedSidebarItem] = useState(SideBarItemType.Files);
+  const selectedSideBarItem = useWorkspaceState(state => state.selectedSideBarItem);
+  const isSideBarOpen = useWorkspaceState(state => state.isSideBarOpen);
+  const setSelectedSideBarItem = useWorkspaceState(state => state.setSelectedSideBarItem);
   return (
     <SideBarContainer>
       {sideBarItems.map((item) => (
         <SideBarItem
-          onClick={() => setSelectedSidebarItem(item.type)}
+          onClick={() => setSelectedSideBarItem(item.type)}
           icon={item.icon}
           isSelected={selectedSideBarItem === item.type}
-          isSideBarOpen={false}
+          isSideBarOpen={isSideBarOpen}
           key={item.type}
         />
       ))}
