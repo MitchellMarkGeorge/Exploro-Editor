@@ -1,9 +1,11 @@
 import { create } from "zustand";
-import { AppState } from "./types";
+import { AppState, Language } from "./types";
 import { defaultDarkTheme } from "@/style/themes";
 import { Settings } from "./types";
+import { useWorkspaceState } from "../WorkspaceState";
+import { File } from "../WorkspaceState/types";
 
-const DEFAULT_SETTINGS: Settings = {
+export const DEFAULT_SETTINGS: Settings = {
   autoSaveCode: true,
   enableBracketMatching: true,
   enableCloseBrackets: true,
@@ -11,11 +13,30 @@ const DEFAULT_SETTINGS: Settings = {
   toggleAstPreview: true,
 };
 
+const getNewFileName = (language: Language) => ""
+
 export const useAppState = create<AppState>((set, get) => ({
   currentPlayground: null,
   playgrounds: [],
   setCurrentPlayground: (playground) => {
     set({ currentPlayground: playground });
+  },
+  setNewPlayGround: (playground) => {
+    // const {  } = useWorkspaceState.getState();
+    const newfile: File = {
+        content: '',
+        name: getNewFileName(playground.language),
+    } 
+
+    set({
+        currentPlayground: playground
+    })
+    useWorkspaceState.setState({
+        files: [newfile],
+        openFiles: [newfile],
+        currentFileIndex: 0,
+
+    })
   },
   currentTheme: defaultDarkTheme,
   themes: [defaultDarkTheme],

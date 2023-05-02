@@ -13,10 +13,10 @@ const ThemeViewItemContainer = styled.div`
 `
 
 const ColorCircle = styled.div<{ color: string }>`
-    width: 1rem;
-    /* width: 1.5rem; */
-    height: 1rem;
-    /* height: 1.5rem; */
+    /* width: 1rem; */
+    width: 1.5rem;
+    /* height: 1rem; */
+    height: 1.5rem;
     border-radius: 50%;
     background-color: ${props => props.color};
     border: 1.5px solid ${props => props.theme.colors.stroke};

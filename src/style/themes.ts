@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 export const defaultDarkTheme: DefaultTheme = {
+    name: "Default Dark Theme",
     colors: {
         primaryAccent: "#0F6BE9",
         secondaryAccent: "#242628",

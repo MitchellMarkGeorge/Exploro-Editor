@@ -5,6 +5,7 @@ export interface AppState {
     currentPlayground: Playground | null
     playgrounds: Playground[]
     setCurrentPlayground: (playground: Playground) => void
+    setNewPlayGround: (playground: Playground) => void
     currentTheme: Theme;
     // currentThemeIndex: number
     themes: Theme[]
@@ -40,10 +41,10 @@ export enum Language {
 
 export const LANGUAGES = Object.values(Language);
 
-interface Playground {
+export interface Playground {
     name: string,
     language: Language,
-    lastEdited: Date// or number???
+    lastEdited: number
 }
 
 export type Theme = DefaultTheme;

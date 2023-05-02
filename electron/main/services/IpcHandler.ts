@@ -29,4 +29,5 @@ export class IpcHandler {
       this.currentWindow.maximize();
     }
   }
+
 }

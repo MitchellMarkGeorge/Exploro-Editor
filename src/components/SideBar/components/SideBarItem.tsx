@@ -23,6 +23,7 @@ const SideBarItemContainer = styled.div<
   }};
   color: ${(props) => props.theme.colors.primaryText};
   cursor: pointer;
+  transition: 250ms linear background-color;
   :hover {
     ${(props) => {
       if (!props.isSelected)

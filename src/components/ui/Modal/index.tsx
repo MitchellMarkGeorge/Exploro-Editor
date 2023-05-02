@@ -3,14 +3,6 @@ import styled from "styled-components";
 
 const ModalBackground = styled.div`
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  padding-top: 20vh;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
@@ -20,34 +12,45 @@ const ModalBackground = styled.div`
 
 const ModalWrapper = styled.div`
   position: relative;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
   background-color: ${(props) => props.theme.colors.background};
   z-index: 2;
   border-radius: 0.5rem;
   padding: 1.5rem;
   color: ${props => props.theme.colors.primaryText};
+  max-height: 22.5rem;
+  min-width: 18.75rem;
+  max-width: 22.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
 `;
 
 interface Props {
   showModal: boolean;
-  setShowModal: (showModal: boolean) => void;
+  closeModal: () => void
+  // setShowModal: (showModal: boolean) => void;
   children: React.ReactNode;
 }
 
-export default function Modal({ children, setShowModal, showModal }: Props) {
+export function Modal({ children, closeModal, showModal }: Props) {
   const modalBackgroundRef = useRef<HTMLDivElement | null>(null);
   const onKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if (showModal && event.key === "Escape") {
         // in case of any un
-        setShowModal(false);
+        closeModal();
       }
     },
-    [showModal, setShowModal]
+    [showModal, closeModal]
   );
 
-  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+  const closeModalOnBackground = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalBackgroundRef.current === e.target) {
-      setShowModal(false);
+      closeModal()
     }
   };
 
@@ -59,10 +62,11 @@ export default function Modal({ children, setShowModal, showModal }: Props) {
   return (
     <>
       {showModal ? (
-        <ModalBackground onClick={closeModal} ref={modalBackgroundRef}>
+        <ModalBackground onClick={closeModalOnBackground} ref={modalBackgroundRef}>
           <ModalWrapper>{children}</ModalWrapper>
         </ModalBackground>
       ) : null}
     </>
   );
 }
+

@@ -8,10 +8,12 @@ export default function NewFileModal() {
   const setShowNewFileModal = useAppState(
     (state) => state.setShowNewFileModal
   );
+
+  const closeModal = () => setShowNewFileModal(false);
   return (
     <Modal
       showModal={showNewFileModal}
-      setShowModal={setShowNewFileModal}
+      closeModal={closeModal}
     >
       <Heading>Hello</Heading>
     </Modal>

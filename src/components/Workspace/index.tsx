@@ -87,6 +87,7 @@ export default function Workspace() {
           // this makes sure that the isSideBarOpen remains in sync
           // and is only called when it is actually collapsed
           onCollapse={(isCollapsed) => {
+            // could just use a set method
             isCollapsed && closeSideBar();
           }}
         >

@@ -4,10 +4,10 @@ export const CheckboxInput = styled.input`
   appearance: none;
   /* display: inline-block; */
   // think about this
-  height: 1rem;
-  /* height: 1.5rem;
-  width: 1.5rem; */
-  width: 1rem;
+  /* height: 1rem; */
+  /* width: 1rem; */
+  height: 1.5rem;
+  width: 1.5rem;
   border: 1px solid ${(props) => props.theme.colors.secondaryText};
   border-radius: 0.25rem;
   /* border-radius: 0.5rem; */

@@ -1,7 +1,8 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
-import { IpcHandler } from './IpcHandler';
+import { IpcHandler } from './services/IpcHandler';
+import { db } from './services/db';
 // import { update } from './update'
 
 // The built directory structure
@@ -43,6 +44,8 @@ const url = process.env.VITE_DEV_SERVER_URL;
 const indexHtml = join(process.env.DIST, 'index.html');
 
 async function createWindow() {
+  await db.read();
+  console.log(app.getPath('userData'));
   if (process.platform === "darwin") {
     app.dock.setIcon(join(process.env.PUBLIC, 'logo.png'));
   }

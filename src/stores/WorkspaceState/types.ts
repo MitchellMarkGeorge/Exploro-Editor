@@ -15,8 +15,9 @@ export interface WorkspaceState {
     closeSideBar: () => void
 }
 
-interface File {
-    id: string
+export interface File {
+    // id: string,
+    name: string
     content: string
 }
 

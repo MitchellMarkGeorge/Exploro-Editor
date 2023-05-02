@@ -4,7 +4,7 @@ import TitleBar from "./components/TitleBar";
 import { useAppState } from "./stores/AppState";
 import Workspace from "./components/Workspace";
 import NewFileModal from "./components/modals/NewFile";
-import NewProjectModal from "./components/modals/NewProject";
+import NewPlaygroundModal from "./components/modals/NewPlayground";
 
 const AppContainer = styled.div`
   height: 100%;
@@ -19,8 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={currentTheme}>
       <GlobalStyle />
-      <NewFileModal/>
-      <NewProjectModal/>
+      {/* <NewFileModal/> */}
+      <NewPlaygroundModal/>
       <AppContainer>
         <TitleBar/>
         <Workspace/>
